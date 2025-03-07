@@ -16,9 +16,7 @@ from models.LIF_hh_fc import SNN_Model_LIF_hh
 from models.LIF_fc import SNN_Model_LIF
 from models.fourLIF_fc import SNN_Model_4LIF
 
-save_folder = 'MNIST'
 device = context.set_context(device_target="GPU")
-data_path = '/data'
 
 def train(data_loader, model, optimizer, criterion):
     model.set_train()
@@ -105,9 +103,6 @@ test_set = ds.NumpySlicesDataset({"data": testX, "label": testLabel}, shuffle=Fa
 batch_size = 128
 train_loader = train_set.batch(batch_size)
 test_loader = test_set.batch(batch_size)
-
-acc1_dict = {"LIF_fc": [], "HH_fc": [], "LIF_hh_fc": [], "LIF_conv": [], "HH_conv": [], "LIF_hh_conv": [], "4LIF_fc": [], "4LIF_conv": []}
-acc2_dict = {"LIF_fc": [], "HH_fc": [], "LIF_hh_fc": [], "LIF_conv": [], "HH_conv": [], "LIF_hh_conv": [], "4LIF_fc": [], "4LIF_conv": []}
 
 for i in range(20):
     seed = i + 1
